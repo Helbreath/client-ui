@@ -138,3 +138,8 @@ window.SendMessage = (msg: string, data: any) => {
 
 window.uiVersion = '0.0.1';
 window.gameVersion = '0.0.0';
+
+if (window.SendJsonMessage === undefined) {
+  // browser debug
+  window.SendJsonMessage = () => {};
+}
