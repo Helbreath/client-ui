@@ -20,7 +20,7 @@ export default class MainMenu extends Vue {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 #mainmenu {
   margin-top: 35vh;
   width: 50vw;

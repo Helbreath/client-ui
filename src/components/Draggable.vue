@@ -72,7 +72,7 @@ export default class Inventory extends Vue {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 #draggable-container {
   position: absolute;
   z-index: 9;
