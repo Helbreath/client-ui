@@ -76,10 +76,6 @@ export default class App extends Vue {
     this.Game = new Game();
   }
 
-  public ChangeGameMode(mode: string) {
-    window.SendMessage('changegamemode', { mode });
-  }
-
   public ShowVersion() {
     switch (this.Game.mode) {
       default:

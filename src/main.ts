@@ -12,11 +12,10 @@ Vue.config.productionTip = false;
 
 declare module 'vue/types/vue' {
   interface Vue {
-    /*$store: Store<any>;
-      $router: VueRouter;
-      $route: Route;*/
-    doSuccess(message: string): void;
-    doError(message: string): void;
+    ChangeGameMode(mode: string): void;
+    ChangeMouse(cursor: number): void;
+    PlaySound(type: string, id: number, distance: number): void;
+    PlayMusic(status: boolean, file?: string): void;
   }
 }
 
@@ -96,6 +95,20 @@ function doOnLoad() {
     store,
     vuetify,
     render: h => h(App),
+    methods: {
+      ChangeGameMode(mode: string) {
+        window.SendMessage('changegamemode', { mode });
+      },
+      ChangeMouse(cursor: number) {
+        window.SendMessage('changecursor', cursor);
+      },
+      PlaySound(type: string, id: number, distance: number = 5) {
+        window.SendMessage('playsound', [type, id, distance]);
+      },
+      PlayMusic(status: boolean, file?: string) {
+        window.SendMessage('music', { status, file });
+      },
+    },
   }).$mount('#app');
   window.removeEventListener('load', doOnLoad);
 
