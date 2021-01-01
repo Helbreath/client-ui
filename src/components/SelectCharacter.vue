@@ -1,7 +1,7 @@
 <template>
   <v-container id="selectcharacter">
     <div id="hbx-popup-center-text" class="text-center text-truncate text-h5">Select your character</div>
-    <v-btn @click="Disconnect()">Create New Character</v-btn>
+    <v-btn @click="CreateNewCharacter()">Create New Character</v-btn>
     <v-btn @click="Disconnect()">Logout</v-btn>
   </v-container>
 </template>
@@ -18,8 +18,14 @@ export default class SelectCharacter extends Vue {
   }
   protected Disconnect() {
     window.SendMessage('disconnect', {});
+    this.$root.PlaySound('E', 14, 5);
   }
-  protected mounted() {}
+  protected CreateNewCharacter() {
+    this.$root.PlaySound('E', 14, 5);
+  }
+  protected mounted() {
+    this.$root.ChangeMouse(0);
+  }
   protected beforeDestroy() {}
 }
 </script>

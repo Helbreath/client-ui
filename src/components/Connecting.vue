@@ -23,6 +23,7 @@ export default class Connecting extends Vue {
   }
   protected CancelConnect() {
     window.SendMessage('cancelconnect', {});
+    this.$root.PlaySound('E', 14, 5);
   }
   protected AddCancel() {
     this.hasCancel = true;

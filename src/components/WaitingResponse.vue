@@ -23,6 +23,7 @@ export default class WaitingResponse extends Vue {
   }
   protected CancelWaiting() {
     window.SendMessage('cancelwaiting', {});
+    this.$root.PlaySound('E', 14, 5);
   }
   protected AddCancel() {
     this.hasCancel = true;
