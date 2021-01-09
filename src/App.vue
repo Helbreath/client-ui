@@ -47,14 +47,13 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { Game } from './Game/game';
-import Dialog from './components/Dialog.vue';
+import { Character } from './types/Character';
 import MainMenu from './components/MainMenu.vue';
 import WaitingResponse from './components/WaitingResponse.vue';
 import Connecting from './components/Connecting.vue';
 import Loading from './components/Loading.vue';
 import SelectCharacter from './components/SelectCharacter.vue';
 import CreateCharacter from './components/CreateCharacter.vue';
-import Inventory from './components/Inventory.vue';
 import ConnectionLost from './components/ConnectionLost.vue';
 import WaitingInitData from './components/WaitingInitData.vue';
 import QueryForceLogin from './components/QueryForceLogin.vue';
@@ -63,14 +62,12 @@ import VersionNotMatch from './components/VersionNotMatch.vue';
 
 @Component({
   components: {
-    Dialog,
     MainMenu,
     WaitingResponse,
     Connecting,
     Loading,
     SelectCharacter,
     CreateCharacter,
-    Inventory,
     ConnectionLost,
     WaitingInitData,
     QueryForceLogin,
