@@ -4,14 +4,17 @@ import App from './App.vue';
 import store from './store';
 import vuetify from './plugins/vuetify';
 import 'roboto-fontface/css/roboto/roboto-fontface.css';
-import '@mdi/font/css/materialdesignicons.css';
+// import '@mdi/font/css/materialdesignicons.css';
+// import 'material-design-icons-iconfont/dist/material-design-icons.css';
 import { Game } from './Game/game';
 import jquery from 'jquery';
+import { Character } from './types/Character';
 
 Vue.config.productionTip = false;
 
 declare module 'vue/types/vue' {
   interface Vue {
+    characters: Character[];
     ChangeGameMode(mode: string): void;
     ChangeMouse(cursor: number): void;
     PlaySound(type: string, id: number, distance: number): void;
