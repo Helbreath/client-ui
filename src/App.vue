@@ -12,6 +12,7 @@
       <SelectCharacter v-else-if="this.Game.mode === 'selectcharacter'" :Game="this.Game" />
       <ConnectionLost v-else-if="this.Game.mode === 'connectionlost'" :Game="this.Game" />
       <CreateCharacter v-else-if="this.Game.mode === 'createnewcharacter'" :Game="this.Game" />
+      <LogResMsg v-else-if="this.Game.mode === 'logresmsg'" :Game="this.Game" />
       <!-- <div id="test" style="width: 300px; height: 300px; margin: auto; margin-top: 150px">TESTING STUFF</div> -->
       <!--<Dialog />-->
 
@@ -49,6 +50,7 @@ import SelectCharacter from './components/SelectCharacter.vue';
 import CreateCharacter from './components/CreateCharacter.vue';
 import Inventory from './components/Inventory.vue';
 import ConnectionLost from './components/ConnectionLost.vue';
+import LogResMsg from './components/LogResMsg.vue';
 
 @Component({
   components: {
@@ -61,6 +63,7 @@ import ConnectionLost from './components/ConnectionLost.vue';
     CreateCharacter,
     Inventory,
     ConnectionLost,
+    LogResMsg,
   },
 })
 export default class App extends Vue {
@@ -87,6 +90,9 @@ export default class App extends Vue {
   protected OnMessage(msg: string, param: any) {
     window.log(`OnMessage: ${msg}`);
     switch (msg) {
+      case 'logresmsg':
+        this.$root.$emit('logresmsg', param);
+        break;
       case 'gameversion':
         this.gameVersion = param.version;
         window.gameVersion = param.version;
