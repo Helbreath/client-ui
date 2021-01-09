@@ -13,6 +13,8 @@
       <ConnectionLost v-else-if="this.Game.mode === 'connectionlost'" :Game="this.Game" />
       <CreateCharacter v-else-if="this.Game.mode === 'createnewcharacter'" :Game="this.Game" />
       <LogResMsg v-else-if="this.Game.mode === 'logresmsg'" :Game="this.Game" />
+      <VersionNotMatch v-else-if="this.Game.mode === 'versionnotmatch'" :Game="this.Game" />
+
       <!-- <div id="test" style="width: 300px; height: 300px; margin: auto; margin-top: 150px">TESTING STUFF</div> -->
       <!--<Dialog />-->
 
@@ -51,6 +53,7 @@ import CreateCharacter from './components/CreateCharacter.vue';
 import Inventory from './components/Inventory.vue';
 import ConnectionLost from './components/ConnectionLost.vue';
 import LogResMsg from './components/LogResMsg.vue';
+import VersionNotMatch from './components/VersionNotMatch.vue';
 
 @Component({
   components: {
@@ -64,6 +67,7 @@ import LogResMsg from './components/LogResMsg.vue';
     Inventory,
     ConnectionLost,
     LogResMsg,
+    VersionNotMatch,
   },
 })
 export default class App extends Vue {
