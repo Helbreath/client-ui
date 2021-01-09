@@ -25,13 +25,15 @@
         <template slot="footer"> Footer </template>
       </Draggable> -->
     </v-main>
+    <!-- <MainBar /> -->
     <div id="hbxtitle">
-      <v-btn id="debugbutton" @click="ToggleDebug">Debug</v-btn>
+      <v-btn block id="debugbutton" @click="ToggleDebug">Debug</v-btn>
       <div v-if="debugon" id="hbxdebug">
-        <v-btn @click="ToggleDebug">Test1</v-btn>
-        <v-btn @click="ToggleDebug">Test2</v-btn>
-        <v-btn @click="ToggleDebug">Test3</v-btn>
-        <v-btn @click="ToggleDebug">Test4</v-btn>
+        <v-btn block @click="$root.PlaySound('E', 14, 5)">Test1</v-btn>
+        <v-btn block @click="Reload">Reload</v-btn>
+        <v-btn block @click="ToggleDebug">Test3</v-btn>
+        <v-btn block @click="ToggleDebug">Test4</v-btn>
+        <!-- <img :src="charSprite" :key="charKey" style="height: 256px; width: 256px" /> -->
       </div>
     </div>
     <div v-if="ShowVersion()" id="version">
@@ -97,8 +99,12 @@ export default class App extends Vue {
     }
   }
 
+  public Reload() {
+    window.location.reload();
+  }
+
   protected OnMessage(msg: string, param: any) {
-    window.log(`OnMessage: ${msg}`);
+    window.log(`OnMessage: ${msg} - ${JSON.stringify(param)}`);
     switch (msg) {
       case 'logresmsg':
         this.$root.$emit('logresmsg', param);
@@ -108,16 +114,10 @@ export default class App extends Vue {
         window.gameVersion = param.version;
         break;
       case 'startload': // start load process
-        // loadingBar = document.querySelector('#loading-bar');
-        // loadingLabel = document.querySelector('#loading-label');
         window.log('Starting load');
         window.SendMessage('startload', {});
         break;
       case 'postload': // load is complete
-        break;
-      case 'logindetails': // receiving login details to auto fill
-        // document.querySelector('#inputEmail').value = param;
-        // document.querySelector('#inputPassword').value = param2;
         break;
       case 'gamemode':
         this.Game.mode = param.mode;
@@ -150,7 +150,6 @@ export default class App extends Vue {
 
   protected Exit() {
     window.vueapp?.$emit('exit');
-    // window.SendMessage('exit');
   }
 
   protected Login() {
@@ -158,16 +157,10 @@ export default class App extends Vue {
     const account = 'a';
     const password = 'b';
     this.$root.$emit('login', { account, password });
-    // if (gameMode != 'mainmenu') return;
-    // document.querySelector('#spinner').style.visibility = 'visible';
-    // let account = document.querySelector('#inputEmail').value;
-    // let password = document.querySelector('#inputPassword').value;
-    // window.SendMessage('login', { account, password });
   }
 
   protected SetResolution(x: number, y: number) {
     window.vueapp?.$emit('resolution', { x, y });
-    // SendMessage('resolution', { x, y });
   }
 
   protected beforeCreate() {}
@@ -239,10 +232,11 @@ export default class App extends Vue {
 #hbxtitle {
   position: absolute;
   top: 0px;
-  left: 0px;
+  right: 0px;
   text-align: center;
-  width: 100vw;
-  background-color: #111111aa;
+  width: 15vw;
+  //height: 40px;
+  //background-color: #111111aa;
 }
 #debugbutton {
   text-align: center;
