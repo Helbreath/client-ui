@@ -75,6 +75,9 @@ export default class App extends Vue {
   private gameVersion: string = window.gameVersion;
   private uiVersion: string = window.uiVersion;
 
+  private charSprite: string = '';
+  private charKey: number = 0;
+
   constructor() {
     super();
     this.Game = new Game();
@@ -119,6 +122,15 @@ export default class App extends Vue {
           window.SendMessage('loadingcomplete', {});
         }
         this.$root.$emit('progress', param.val, param.label);
+        break;
+      case 'charsprite':
+        this.charSprite = `data:image/png;base64,${param.data}`;
+        this.charKey = param.key;
+        break;
+      case 'characterlist':
+        this.$root.characters = param as Character[];
+        this.$root.$emit('characterlist');
+        window.log(JSON.stringify(this.$root.characters));
         break;
     }
   }
