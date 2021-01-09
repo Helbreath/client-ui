@@ -13,6 +13,7 @@
       <ConnectionLost v-else-if="this.Game.mode === 'connectionlost'" :Game="this.Game" />
       <CreateCharacter v-else-if="this.Game.mode === 'createnewcharacter'" :Game="this.Game" />
       <WaitingInitData v-else-if="this.Game.mode === 'waitinginitdata'" :Game="this.Game" />
+      <QueryForceLogin v-else-if="this.Game.mode === 'queryforcelogin'" :Game="this.Game" />
       <LogResMsg v-else-if="this.Game.mode === 'logresmsg'" :Game="this.Game" />
       <VersionNotMatch v-else-if="this.Game.mode === 'versionnotmatch'" :Game="this.Game" />
 
@@ -56,6 +57,7 @@ import CreateCharacter from './components/CreateCharacter.vue';
 import Inventory from './components/Inventory.vue';
 import ConnectionLost from './components/ConnectionLost.vue';
 import WaitingInitData from './components/WaitingInitData.vue';
+import QueryForceLogin from './components/QueryForceLogin.vue';
 import LogResMsg from './components/LogResMsg.vue';
 import VersionNotMatch from './components/VersionNotMatch.vue';
 
@@ -71,6 +73,7 @@ import VersionNotMatch from './components/VersionNotMatch.vue';
     Inventory,
     ConnectionLost,
     WaitingInitData,
+    QueryForceLogin,
     LogResMsg,
     VersionNotMatch,
   },
