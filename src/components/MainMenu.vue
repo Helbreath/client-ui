@@ -16,6 +16,7 @@ export default class MainMenu extends Vue {
   @Prop() private Game!: Game;
   protected mounted() {}
   protected Connect() {
+    this.$root.PlaySound('E', 14, 5);
     window.SendMessage('mainmenuconnect', {});
   }
 }
