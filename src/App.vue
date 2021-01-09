@@ -11,6 +11,7 @@
       <Loading v-else-if="this.Game.mode === 'loading'" :Game="this.Game" />
       <SelectCharacter v-else-if="this.Game.mode === 'selectcharacter'" :Game="this.Game" />
       <ConnectionLost v-else-if="this.Game.mode === 'connectionlost'" :Game="this.Game" />
+      <CreateCharacter v-else-if="this.Game.mode === 'createnewcharacter'" :Game="this.Game" />
       <!-- <div id="test" style="width: 300px; height: 300px; margin: auto; margin-top: 150px">TESTING STUFF</div> -->
       <!--<Dialog />-->
 
@@ -45,7 +46,7 @@ import WaitingResponse from './components/WaitingResponse.vue';
 import Connecting from './components/Connecting.vue';
 import Loading from './components/Loading.vue';
 import SelectCharacter from './components/SelectCharacter.vue';
-import Draggable from './components/Draggable.vue';
+import CreateCharacter from './components/CreateCharacter.vue';
 import Inventory from './components/Inventory.vue';
 import ConnectionLost from './components/ConnectionLost.vue';
 
@@ -57,7 +58,7 @@ import ConnectionLost from './components/ConnectionLost.vue';
     Connecting,
     Loading,
     SelectCharacter,
-    Draggable,
+    CreateCharacter,
     Inventory,
     ConnectionLost,
   },
