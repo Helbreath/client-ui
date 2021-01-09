@@ -26,7 +26,7 @@ export default class Loading extends Vue {
   }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 #loading {
   margin-top: 45vh;
   width: 50vw;

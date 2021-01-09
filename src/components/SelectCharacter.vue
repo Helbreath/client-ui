@@ -29,7 +29,7 @@ export default class SelectCharacter extends Vue {
   protected beforeDestroy() {}
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 #connecting {
   margin-top: 35vh;
   width: 50vw;

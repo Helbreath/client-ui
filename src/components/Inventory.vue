@@ -71,7 +71,7 @@ export default class Inventory extends Vue {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 #inventory-container {
   position: absolute;
   z-index: 9;

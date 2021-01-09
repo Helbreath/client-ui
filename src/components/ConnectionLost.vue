@@ -38,7 +38,7 @@ export default class ConnectionLost extends Vue {
   }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 #waitingresponse {
   //position: absolute;
   //top: 0px;
