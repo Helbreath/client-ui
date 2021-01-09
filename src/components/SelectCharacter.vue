@@ -124,6 +124,7 @@ export default class SelectCharacter extends Vue {
     this.$root.PlaySound('E', 14, 5);
     window.SendMessage('deletecharacter', { name: this.$root.characters[this.selectedCharacter].name });
     this.deletingCharacter = false;
+    this.selectedCharacter = 0;
   }
   protected CancelDeleteCharacter() {
     this.$root.PlaySound('E', 14, 5);
