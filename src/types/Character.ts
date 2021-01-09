@@ -1,0 +1,32 @@
+export interface Character {
+  id: bigint;
+  name: string;
+  level: number;
+  strength: number;
+  vitality: number;
+  dexterity: number;
+  intelligence: number;
+  magic: number;
+  charisma: number;
+  experience: bigint;
+  gender: number;
+  skin: number;
+  hairstyle: number;
+  haircolor: number;
+  underwear: number;
+  apprcolor: number;
+  appr1: number;
+  appr2: number;
+  appr3: number;
+  appr4: number;
+  headAppr: number;
+  bodyAppr: number;
+  armAppr: number;
+  legAppr: number;
+  maploc: string;
+  year: number;
+  month: number;
+  day: number;
+  hour: number;
+  minute: number;
+}
