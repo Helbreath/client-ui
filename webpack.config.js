@@ -18,4 +18,10 @@ module.exports = {
       }),
     ],
   },
+  resolve: {
+    extensions: ['*', '.js', '.jsx', '.vue', '.ts', '.tsx'],
+    alias: {
+      '@': path.resolve('src'),
+    },
+  },
 };
