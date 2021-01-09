@@ -1,56 +1,40 @@
 <template>
-  <v-container style="cursor: pointer">
-    <div class="text-center text-truncate mt-3">UI Dialog</div>
+  <v-container id="dialog" :style="'background-image: url(https://helbreathio/ui/assets/' + dialogImage + '.png);'">
+    <v-dialog v-model="dialog" persistent max-width="290">
+      <v-card>
+        <v-card-title class="text-h6">{{ header }}</v-card-title>
+        <v-card-text>{{ body }}</v-card-text>
+        <v-card-actions>
+          <v-btn color="success darken-1" text @click="callback">Okay</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </v-container>
 </template>
 <script lang="ts">
-// import { mapState } from 'vuex';
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component
-export default class Dialog extends Vue {
+export default class WaitingInitData extends Vue {
+  @Prop({ default: '' }) private header!: string;
+  @Prop({ default: '' }) private body!: string;
+  @Prop({ default: 'thin-dialog' }) private dialogImage!: string;
+  @Prop() private callback!: () => void;
+  private dialog: any;
+
+  constructor() {
+    super();
+  }
   protected mounted() {}
-  private getStatusIcon(status: number) {
-    switch (status) {
-      case 0:
-        return 'fa-question';
-      case 1:
-        return 'fa-cloud-upload-alt';
-      case 2:
-        return 'fa-exclamation-triangle';
-      case 3:
-        return 'fa-times';
-      case 4:
-        return 'fa-check';
-      case 5:
-        return 'fa-power-off';
-    }
-    return 'fa-power-off';
-  }
-  private getStatusColor(status: number) {
-    switch (status) {
-      case 0:
-        return 'teal';
-      // return 'info';
-      case 1:
-        return 'blue darken-4';
-      // return 'primary';
-      case 2:
-        return 'yellow';
-      // return 'warning';
-      case 3:
-        return 'red';
-      // return 'danger';
-      case 4:
-        return 'green';
-      // return 'success';
-      case 5:
-        return 'red';
-      // return 'danger';
-    }
-    return 'grey';
-  }
+  protected beforeDestroy() {}
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
+#dialog {
+  margin-top: 35vh;
+  width: 50vw;
+  height: 25vh;
+  background-color: rgba(97, 41, 41, 0.5);
+  border-radius: 25px;
+}
 </style>
