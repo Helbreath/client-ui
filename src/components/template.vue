@@ -1,9 +1,6 @@
 <template>
   <v-container id="connecting">
-    <div id="hbx-popup-center-text" class="text-center text-truncate text-h5">
-      Connecting...<br />
-      <v-btn v-if="hasCancel" class="text-center mt-2" @click="CancelConnect()">Cancel connecting</v-btn>
-    </div>
+    <div id="hbx-popup-center-text" class="text-center text-truncate text-h5">Connecting...<br /></div>
   </v-container>
 </template>
 <script lang="ts">
@@ -12,28 +9,13 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import { Game } from '../Game/game';
 
 @Component
-export default class SelectCharacter extends Vue {
+export default class WaitingInitData extends Vue {
   @Prop() private Game!: Game;
-  private timeStarted: number;
-  private hasCancel: boolean = false;
-  private cancelTimeout!: number;
   constructor() {
     super();
-    this.timeStarted = Date.now();
   }
-  protected CancelConnect() {
-    window.SendMessage('cancelconnect', {});
-  }
-  protected AddCancel() {
-    this.hasCancel = true;
-    this.cancelTimeout = 0;
-  }
-  protected mounted() {
-    this.cancelTimeout = setTimeout(this.AddCancel, 5000);
-  }
-  protected beforeDestroy() {
-    if (this.cancelTimeout) clearTimeout(this.cancelTimeout);
-  }
+  protected mounted() {}
+  protected beforeDestroy() {}
 }
 </script>
 <style lang="scss">
