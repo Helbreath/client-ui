@@ -34,18 +34,18 @@
 
     <v-main :key="update">
 <!--      <router-view/>-->
-      <MainMenu v-if="gameMode === 'mainmenu'" />
+      <MainMenu v-if="gameMode === 'main-menu'" />
       <Connecting v-else-if="gameMode === 'connecting'" />
-      <WaitingResponse v-else-if="gameMode === 'waitingresponse'" />
+      <WaitingResponse v-else-if="gameMode === 'waiting-response'" />
       <Loading v-else-if="gameMode === 'loading'" />
-      <SelectCharacter v-else-if="gameMode === 'selectcharacter'" />
-      <ConnectionLost v-else-if="gameMode === 'connectionlost'" />
-      <CreateCharacter v-else-if="gameMode === 'createnewcharacter'" />
-      <WaitingInitData v-else-if="gameMode === 'waitinginitdata'" />
-      <MainGame v-else-if="gameMode === 'maingame'" />
-      <QueryForceLogin v-else-if="gameMode === 'queryforcelogin'" />
-      <LogResMsg v-else-if="gameMode === 'logresmsg'" />
-      <VersionNotMatch v-else-if="gameMode === 'versionnotmatch'" />
+      <SelectCharacter v-else-if="gameMode === 'select-character'" />
+      <ConnectionLost v-else-if="gameMode === 'connection-lost'" />
+      <CreateCharacter v-else-if="gameMode === 'create-new-character'" />
+      <WaitingInitData v-else-if="gameMode === 'waiting-init-data'" />
+      <MainGame v-else-if="gameMode === 'main-game'" />
+      <QueryForceLogin v-else-if="gameMode === 'query-force-login'" />
+      <LogResMsg v-else-if="gameMode === 'log-res-msg'" />
+      <VersionNotMatch v-else-if="gameMode === 'version-not-match'" />
 
       <!-- <div id="test" style="width: 300px; height: 300px; margin: auto; margin-top: 150px">TESTING STUFF</div> -->
       <!--<Dialog />-->
@@ -87,7 +87,7 @@ import MainMenu from './components/MainMenu.vue';
 // import Connecting from './components/Connecting.vue';
 // import SelectCharacter from './components/SelectCharacter.vue';
 // import CreateCharacter from './components/CreateCharacter.vue';
-// import ConnectionLost from './components/ConnectionLost.vue';
+import ConnectionLost from './components/ConnectionLost.vue';
 // import WaitingInitData from './components/WaitingInitData.vue';
 // import MainGame from './components/MainGame.vue';
 // import QueryForceLogin from './components/QueryForceLogin.vue';
@@ -144,7 +144,7 @@ function reload() {
 }
 
 onMounted(() => {
-  sendMessage('onload', {});
+  sendMessage('on-load', {});
 });
 </script>
 <style lang="scss">

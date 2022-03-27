@@ -60,15 +60,15 @@ store.registerModule('game', {
     },
 
     changeGameMode({ dispatch, commit }, mode: string) {
-      return dispatch('sendMessage', { msg: 'changegamemode', data: mode });
+      return dispatch('sendMessage', { msg: 'change-game-mode', data: mode });
     },
 
     changeMouse({ dispatch, commit }, cursor: number) {
-      return dispatch('sendMessage', { msg: 'changecursor', data: cursor });
+      return dispatch('sendMessage', { msg: 'change-cursor', data: cursor });
     },
 
     playSound({ dispatch, commit }, data: { type: string, id: number, distance: number }) {
-      return dispatch('sendMessage', { msg: 'playsound', data });
+      return dispatch('sendMessage', { msg: 'play-sound', data });
     },
 
     playMusic({ dispatch, commit }, data: { status: boolean, file?: string }) {
@@ -80,31 +80,31 @@ store.registerModule('game', {
       const param = data.param;
       console.log(`OnMessage: ${msg} - ${JSON.stringify(param)}`);
       switch (msg) {
-        case 'logresmsg':
-          return dispatch('logresmsg', param);
-        case 'gameversion':
+        case 'log-res-msg':
+          return dispatch('log-res-msg', param);
+        case 'game-version':
           return commit('setGameVersion', param.version);
-        case 'startload': // start load process
+        case 'start-load': // start load process
           console.log('Starting load');
-          return dispatch('sendMessage', { msg: 'startload', data: {} });
-        case 'postload': // load is complete
+          return dispatch('sendMessage', { msg: 'start-load', data: {} });
+        case 'post-load': // load is complete
           break;
-        case 'gamemode':
+        case 'game-mode':
           console.log(`Game mode recv: ${param.mode}`);
           commit('incUpdate');
           return commit('setMode', param.mode);
-        case 'loadingprogress':
+        case 'loading-progress':
           if (param.val === 100) {
-            await dispatch('sendMessage', { msg: 'loadingcomplete', data: {} });
+            await dispatch('sendMessage', { msg: 'loading-complete', data: {} });
           }
           commit('setLoadingProgress', param.val);
           commit('setLoadingLabel', param.label);
           return;
-        case 'charsprite':
+        case 'char-sprite':
           commit('setCharSprite', `data:image/png;base64,${param.data}`);
           commit('setCharKey', param.key);
           return;
-        case 'characterlist':
+        case 'character-list':
           commit('setCharacters', param);
           // this.$root.$emit('characterlist');
           console.log(JSON.stringify(param));

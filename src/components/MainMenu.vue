@@ -1,5 +1,5 @@
 <template>
-  <v-container id="mainmenu" class="text-center" style="width: 500px">
+  <v-container id="main-menu" class="text-center" style="width: 500px">
     <div class="text-truncate mt-3">Helbreath Xtreme Main Menu</div>
     <div class="mt-3">
       <v-btn class="mt-3" @click="connect">Connect to server</v-btn>
@@ -47,7 +47,7 @@ function showVersion() {
 
 function connect() {
   playSound('E', 14, 5);
-  sendMessage('mainmenuconnect', {});
+  sendMessage('main-menu-connect', {});
 }
 
 function login() {
@@ -65,7 +65,7 @@ function logout() {
 }
 </script>
 <style lang="scss">
-#mainmenu {
+#main-menu {
   margin-top: 35vh;
   width: 50vw;
   height: 25vh;
