@@ -1,0 +1,88 @@
+28 - LOGRESMSGTYPE_NEWCHARACTERFAILED
+29 - LOGRESMSGTYPE_ALREADYEXISTINGCHARACTER
+47 - LOGRESMSGTYPE_NEWCHARACTERCREATED
+06 - LOGRESMSGTYPE_ALREADYEXISTINGACCOUNT
+05 - LOGRESMSGTYPE_NEWACCOUNTFAILED
+54 - LOGRESMSGTYPE_NEWACCOUNTCREATED
+12 - LOGRESMSGTYPE_NOTEXISTINGACCOUNT
+11 - LOGRESMSGTYPE_PASSWORDMISMATCH
+6C - LOGRESMSGTYPE_PASSWORDCHANGEFAIL
+6B - LOGRESMSGTYPE_PASSWORDCHANGESUCCESS
+7  - LOGRESMSGTYPE_SERVICENOTAVAILABLE
+7K - LOGRESMSGTYPE_ACCOUNTLOCKED
+7I - LOGRESMSGTYPE_NOTENOUGHPOINT
+7H - LOGRESMSGTYPE_REJECT
+3A - LOGRESMSGTYPE_CHARACTERDELETED
+
+
+3E - ENTERGAMERESTYPE_REJECT - 1
+3F - ENTERGAMERESTYPE_REJECT - 2
+33 - ENTERGAMERESTYPE_REJECT - 3
+3D - ENTERGAMERESTYPE_REJECT - 4
+3G - ENTERGAMERESTYPE_REJECT - 5
+3Z - ENTERGAMERESTYPE_REJECT - 6
+3J - ENTERGAMERESTYPE_REJECT - 7
+
+3X - ENTERGAMERESTYPE_FORCEDISCONN
+1Y - LOGRESMSGTYPE_NOTEXISTINGWORLDSERVER
+6M - LOGRESMSGTYPE_FORCECHANGEPASSWORD
+1a - LOGRESMSGTYPE_INVALIDKOREANSSN
+1b - LOGRESMSGTYPE_LESSTHENFIFTEEN
+
+
+
+0- - _Draw_UpdateScreen_OnCreateNewAccount
+5- - _Draw_UpdateScreen_OnCreateNewAccount
+
+1- - ?
+7- - ?
+
+2- - ?
+4- - ?
+3- - UpdateScreen_OnSelectCharacter
+6- - UpdateScreen_OnSelectCharacter
+8- - DrawNewDialogBox(SPRID_INTERFACE_ND_MAINMENU, -1, -1, 0, true);
+
+
+
+-1 - "Password is not correct!"
+-2 - "Not existing account!"
+-3 - "Can not connect to game server!"
+-4 - "New account created."
+-5 - "Can not create new account!"
+-6 - "Already existing account name."
+-7 - "New character created."
+-8 - "Can not create new character!"
+-9 - "Already existing character name."
+-A - "Character deleted."
+-B - "Password changed."
+-C - "Can not change password!"
+-D - "You cannot login because of data difference. Contact gamemaster."
+-E - "Character above trial level can not log in. You need to login in the registered IP or registered account."
+-F - "Your registered IP group have exceeded the limit."
+-G - "You cannot log in because the game server is offline. Log in later."
+-H - "You can't login because account is blocked. Block date: Until %dY %dM %dD"
+-I - "Not Enough Point!"
+-J - "World Server Full"
+-M - "Your password expired"
+-U - "Keycode input Success!"
+-X - "Account logging out. Try again in a few seconds."
+-Y - "World server is not active now. Try again a few minutes later."
+-Z - "Server maximum user limit. Try again a few minutes later."
+
+
+
+After Log Response: 
+0- - GAMEMODE_ONCREATENEWACCOUNT
+1- - GAMEMODE_ONMAINMENU
+2- - GAMEMODE_ONCREATENEWCHARACTER
+3- - GAMEMODE_ONSELECTCHARACTER
+4- - GAMEMODE_ONSELECTCHARACTER
+5- - GAMEMODE_ONMAINMENU
+6B - GAMEMODE_ONMAINMENU
+6C - GAMEMODE_ONCHANGEPASSWORD
+6M - GAMEMODE_ONCHANGEPASSWORD
+
+7- - GAMEMODE_ONMAINMENU
+8- - GAMEMODE_ONMAINMENU
+

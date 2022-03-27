@@ -1,6 +1,6 @@
 {
   "defaultSeverity": "warning",
-  "extends": ["tslint:recommended"],
+  "extends": ["tslint:latest"],
   "linterOptions": {
     "exclude": ["node_modules/**"]
   },
@@ -20,6 +20,8 @@
     "arrow-parens": false,
     "object-literal-key-quotes": false,
     "no-empty": false,
+    "no-implicit-dependencies": false,
+    "no-string-literal": false,
     "trailing-comma": [
       true,
       {
@@ -29,3 +31,4 @@
     ]
   }
 }
+

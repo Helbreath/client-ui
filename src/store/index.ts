@@ -1,9 +1,18 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
+import { createStore, Store } from 'vuex';
+import { InjectionKey } from 'vue';
 
-Vue.use(Vuex);
+export interface State {
+  loggedIn: boolean;
+  mainLoading: boolean;
+  userSettingsOpen: boolean;
+  serverSettingsOpen: boolean;
+  channelSettingsOpen: boolean;
+}
 
-export default new Vuex.Store({
+export const key: InjectionKey<Store<State>> = Symbol();
+
+const store = createStore({
+  strict: process.env.NODE_ENV !== 'production',
   state: {
   },
   mutations: {
@@ -13,3 +22,5 @@ export default new Vuex.Store({
   modules: {
   },
 });
+
+export default store;

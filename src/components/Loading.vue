@@ -1,30 +1,25 @@
 <template>
-  <v-container id="loading">
-    <v-progress-linear color="red lighten-2" :value="progress" stream></v-progress-linear>
+  <div id="loading">
+    <div style="border: 1px solid #ccc;">
+      <div :style='[ "height: 24px", `width: ${progress}%`]'></div>
+    </div>
+<!--    <v-progress-linear color="red lighten-2" :value="progress" stream></v-progress-linear>-->
     <div class="text-center text-truncate mt-3">{{ label }}</div>
-  </v-container>
+  </div>
 </template>
-<script lang="ts">
-// import { mapState } from 'vuex';
-import { Component, Prop, Vue } from 'vue-property-decorator';
-import { Game } from '../Game/game';
+<script setup lang="ts">
+import { useRouter } from 'vue-router';
+import { ref, computed, onMounted, watch } from 'vue';
+import { useStore } from 'vuex';
+import { key } from '@/store';
 
-@Component
-export default class Loading extends Vue {
-  @Prop() private Game!: Game;
-  private progress: number = 0;
-  private label: string = '';
-  protected mounted() {
-    this.$root.$on('progress', this.OnProgress);
-  }
-  protected beforeDestroy() {
-    this.$root.$off('progress', this.OnProgress);
-  }
-  protected OnProgress(val: number, label: string) {
-    this.progress = val;
-    this.label = label;
-  }
-}
+const store = useStore(key);
+const router = useRouter();
+
+// getters
+const progress = computed(() => store.getters['game/loadingProgress']);
+const label = computed(() => store.getters['game/loadingLabel']);
+
 </script>
 <style lang="scss">
 #loading {

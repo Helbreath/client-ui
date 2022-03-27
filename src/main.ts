@@ -1,148 +1,37 @@
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { createApp, Ref } from 'vue';
 import App from './App.vue';
-// import router from './router';
-import store from './store';
-import vuetify from './plugins/vuetify';
-import 'roboto-fontface/css/roboto/roboto-fontface.css';
-// import '@mdi/font/css/materialdesignicons.css';
-// import 'material-design-icons-iconfont/dist/material-design-icons.css';
-import { Game } from './Game/game';
-import jquery from 'jquery';
-import { Character } from './types/Character';
+import router from './router';
+import store, { key } from './store';
+import * as Sentry from '@sentry/vue';
+import { Integrations } from '@sentry/tracing';
+import './store/modules';
+const app = createApp(App);
+import './css/main.scss';
+import './css/normalize.css';
 
-Vue.config.productionTip = false;
+Sentry.init({
+  app,
+  dsn: import.meta.env.VITE_SENTRY_URL as string,
+  integrations: [
+    new Integrations.BrowserTracing({
+      routingInstrumentation: Sentry.vueRouterInstrumentation(router),
+      tracingOrigins: [/^\//],
+    }),
+  ],
+  environment: import.meta.env.VITE_ENVIRONMENT as string,
+  tracesSampleRate: parseFloat(import.meta.env.VITE_APP_SENTRY_TRACE_SAMPLE_RATE as string),
+});
 
-declare module 'vue/types/vue' {
-  interface Vue {
-    characters: Character[];
-    ChangeGameMode(mode: string): void;
-    ChangeMouse(cursor: number): void;
-    PlaySound(type: string, id: number, distance: number): void;
-    PlayMusic(status: boolean, file?: string): void;
-  }
-}
+app.use(store, key);
+app.use(router);
 
-declare global {
-  interface Window {
-    jQuery: JQueryStatic;
-    $: JQueryStatic;
-    _: any;
-    vueapp: Base | null;
-    game: Game;
-    SendMessage: (msg: string, data: any) => void;
-    ReceiveMessage: (msg: string, param: string, param2: string) => void;
-    emit: (data: any) => void;
-    SendJsonMessage: (data: string) => void;
-    log: (msg: string) => void;
-    gameVersion: string;
-    uiVersion: string;
-  }
-}
-
-@Component
-class Base extends Vue {
-  private drawer: any = null;
-  private timeoutTracker: any = null;
-
-  @Prop() private source!: string;
-
-  public doError(message: string) {
-    clearTimeout(this.timeoutTracker);
-    const err = $('.status-overlay');
-    const errtext = $('#aegis-status');
-    err.removeClass('hidden').addClass('visible');
-    errtext.text(message);
-    errtext.removeClass('alert-success').addClass('alert-danger');
-    this.timeoutTracker = setTimeout(() => {
-      err.removeClass('visible').addClass('hidden');
-    }, 3000);
-  }
-  public doSuccess(message: string) {
-    clearTimeout(this.timeoutTracker);
-    const err = $('.status-overlay');
-    const errtext = $('#aegis-status');
-    err.removeClass('hidden').addClass('visible');
-    errtext.text(message);
-    errtext.removeClass('alert-danger').addClass('alert-success');
-    this.timeoutTracker = setTimeout(() => {
-      err.removeClass('visible').addClass('hidden');
-    }, 3000);
-  }
-
-  protected beforeCreate() {}
-  protected created() {}
-  protected beforeMount() {}
-  protected mounted() {}
-  protected beforeUpdate() {}
-  protected updated() {}
-  protected beforeDestroy() {}
-  protected destroyed() {}
-  private avatar() {
-    return this.$store.state.Account.data.avatar;
-  }
-  private credit() {
-    return this.$store.state.Account.data.credit;
-  }
-  private username() {
-    return this.$store.state.Account.data.username;
-  }
-  private auth() {
-    return this.$store.state.Account.data.auth;
-  }
-}
-
-function doOnLoad() {
-  let app: Base | null = null;
-
-  window.vueapp = app = new Base({
-    store,
-    vuetify,
-    render: h => h(App),
-    methods: {
-      ChangeGameMode(mode: string) {
-        window.SendMessage('changegamemode', { mode });
-      },
-      ChangeMouse(cursor: number) {
-        window.SendMessage('changecursor', cursor);
-      },
-      PlaySound(type: string, id: number, distance: number = 5) {
-        window.SendMessage('playsound', [type, id, distance]);
-      },
-      PlayMusic(status: boolean, file?: string) {
-        window.SendMessage('music', { status, file });
-      },
-    },
-  }).$mount('#app');
-  window.removeEventListener('load', doOnLoad);
-
-  window.vueapp = app;
-}
-export function configure() {
-  // tslint:disable-next-line: no-var-requires
-  window.Vue = require('vue');
-
-  window.$ = window.jQuery = require('jquery');
-
-  window.game = new Game();
-
-  window.addEventListener('load', doOnLoad);
-}
-
-configure();
+app.mount('#app');
 
 window.ReceiveMessage = (msg: string, param: string) => {
-  // console.log(`ReceiveMessage("${msg}", "${param}")`);
-  window.vueapp?.$emit('message', msg, JSON.parse(param));
+  return store.dispatch('game/onMessage', { msg, param: JSON.parse(param) });
 };
 
-window.SendMessage = (msg: string, data: any) => {
-  window.SendJsonMessage(JSON.stringify({ msg, data }));
-};
-
-window.uiVersion = '0.0.1';
-window.gameVersion = '0.0.0';
-
+// browser debug
 if (window.SendJsonMessage === undefined) {
-  // browser debug
   window.SendJsonMessage = () => {};
 }
