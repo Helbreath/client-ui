@@ -29,4 +29,15 @@ export interface Character {
   day: number;
   hour: number;
   minute: number;
+  mana: number;
+  maxMana: number;
+  health: number;
+  maxHealth: number;
+  stamina: number;
+  maxStamina: number;
+  gold: bigint;
+  bankGold: bigint;
+  premium: boolean;
+  premiumCoins: bigint;
+  premiumTier: number;
 }

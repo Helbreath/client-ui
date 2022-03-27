@@ -1,13 +1,19 @@
-import { createApp, Ref } from 'vue';
+import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
 import store, { key } from './store';
 import * as Sentry from '@sentry/vue';
 import { Integrations } from '@sentry/tracing';
 import './store/modules';
-const app = createApp(App);
 import './css/main.scss';
 import './css/normalize.css';
+import vuetify from './plugins/vuetify'
+import { loadFonts } from './plugins/webfontloader'
+
+loadFonts();
+
+const app = createApp(App);
+
 
 Sentry.init({
   app,
@@ -24,7 +30,7 @@ Sentry.init({
 
 app.use(store, key);
 app.use(router);
-
+app.use(vuetify);
 app.mount('#app');
 
 window.ReceiveMessage = (msg: string, param: string) => {

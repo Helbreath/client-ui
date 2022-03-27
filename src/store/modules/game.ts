@@ -15,6 +15,7 @@ store.registerModule('game', {
     charKey: '',
     characters: [] as Character[],
     currentCharacter: null as Character | null,
+    debug: import.meta.env.VITE_APP_DEBUG as boolean,
   }),
 
   mutations: {
@@ -47,6 +48,9 @@ store.registerModule('game', {
     },
     setCurrentCharacter(state, character: Character | null) {
       state.currentCharacter = character;
+    },
+    toggleDebug(state) {
+      state.debug = !state.debug;
     },
   },
 
@@ -139,6 +143,9 @@ store.registerModule('game', {
     },
     currentCharacter(state) {
       return state.currentCharacter;
+    },
+    debug(state) {
+      return state.debug;
     },
   },
 });

@@ -1,11 +1,8 @@
 <template>
-  <div id="loading">
-    <div style="border: 1px solid #ccc;">
-      <div :style='[ "height: 24px", `width: ${progress}%`]'></div>
-    </div>
-<!--    <v-progress-linear color="red lighten-2" :value="progress" stream></v-progress-linear>-->
+  <v-container id="loading">
+    <v-progress-linear color="red lighten-2" :value="progress" stream></v-progress-linear>
     <div class="text-center text-truncate mt-3">{{ label }}</div>
-  </div>
+  </v-container>
 </template>
 <script setup lang="ts">
 import { useRouter } from 'vue-router';

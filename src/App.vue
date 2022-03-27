@@ -1,61 +1,77 @@
 <template>
-  <div id="hbx-app">
-    <div id="test" class="text-4xl" style="width: 300px; height: 300px; margin: 150px auto auto;">
-      Helbreath Xtreme
-    </div>
+<!--  <div id="hbx-app">-->
 
-    <button class="btn-primary btn btn-default" @click="shit">click me</button>
-    <div v-if="showVersion" id="version">
-      Game: v{{ gameVersion }}<br />
-      UI: v{{ uiVersion }}
-    </div>
-  </div>
+<!--    <div :key="update">-->
+<!--      <MainMenu v-if="gameMode === 'mainmenu'" />-->
+<!--      <Connecting v-else-if="gameMode === 'connecting'" />-->
+<!--      <WaitingResponse v-else-if="gameMode === 'waitingresponse'" />-->
+<!--      <Loading v-else-if="gameMode === 'loading'" />-->
+<!--      <SelectCharacter v-else-if="gameMode === 'selectcharacter'" />-->
+<!--      <ConnectionLost v-else-if="gameMode === 'connectionlost'" />-->
+<!--      <CreateCharacter v-else-if="gameMode === 'createnewcharacter'" />-->
+<!--      <WaitingInitData v-else-if="gameMode === 'waitinginitdata'" />-->
+<!--      <MainGame v-else-if="gameMode === 'maingame'" />-->
+<!--      <QueryForceLogin v-else-if="gameMode === 'queryforcelogin'" />-->
+<!--      <LogResMsg v-else-if="gameMode === 'logresmsg'" />-->
+<!--      <VersionNotMatch v-else-if="gameMode === 'versionnotmatch'" />-->
+<!--    </div>-->
 
+<!--    <div id="test" class="text-4xl" style="width: 300px; height: 300px; margin: 150px auto auto;">-->
+<!--      Helbreath Xtreme-->
+<!--    </div>-->
 
-<!--  <v-app id="hbxapp">-->
+<!--    <button class="btn-primary btn btn-default" @click="shit">click me</button>-->
+<!--    <div v-if="showVersion" id="version">-->
+<!--      Game: v{{ gameVersion }}<br />-->
+<!--      UI: v{{ uiVersion }}-->
+<!--    </div>-->
+<!--  </div>-->
+
+  <v-app id="hbxapp">
 <!--    <v-app-bar app color="primary" dark>-->
 <!--      <div class="d-flex align-center">Helbreath Xtreme</div>-->
 <!--    </v-app-bar>-->
 
-<!--    <v-main :key="update">-->
-<!--      <MainMenu v-if="this.Game.mode === 'mainmenu'" :Game="this.Game" />-->
-<!--      <Connecting v-else-if="this.Game.mode === 'connecting'" :Game="this.Game" />-->
-<!--      <WaitingResponse v-else-if="this.Game.mode === 'waitingresponse'" :Game="this.Game" />-->
-<!--      <Loading v-else-if="this.Game.mode === 'loading'" :Game="this.Game" />-->
-<!--      <SelectCharacter v-else-if="this.Game.mode === 'selectcharacter'" :Game="this.Game" />-->
-<!--      <ConnectionLost v-else-if="this.Game.mode === 'connectionlost'" :Game="this.Game" />-->
-<!--      <CreateCharacter v-else-if="this.Game.mode === 'createnewcharacter'" :Game="this.Game" />-->
-<!--      <WaitingInitData v-else-if="this.Game.mode === 'waitinginitdata'" :Game="this.Game" />-->
-<!--      <MainGame v-else-if="this.Game.mode === 'maingame'" :Game="this.Game" />-->
-<!--      <QueryForceLogin v-else-if="this.Game.mode === 'queryforcelogin'" :Game="this.Game" />-->
-<!--      <LogResMsg v-else-if="this.Game.mode === 'logresmsg'" :Game="this.Game" />-->
-<!--      <VersionNotMatch v-else-if="this.Game.mode === 'versionnotmatch'" :Game="this.Game" />-->
+    <v-main :key="update">
+<!--      <router-view/>-->
+      <MainMenu v-if="gameMode === 'mainmenu'" />
+      <Connecting v-else-if="gameMode === 'connecting'" />
+      <WaitingResponse v-else-if="gameMode === 'waitingresponse'" />
+      <Loading v-else-if="gameMode === 'loading'" />
+      <SelectCharacter v-else-if="gameMode === 'selectcharacter'" />
+      <ConnectionLost v-else-if="gameMode === 'connectionlost'" />
+      <CreateCharacter v-else-if="gameMode === 'createnewcharacter'" />
+      <WaitingInitData v-else-if="gameMode === 'waitinginitdata'" />
+      <MainGame v-else-if="gameMode === 'maingame'" />
+      <QueryForceLogin v-else-if="gameMode === 'queryforcelogin'" />
+      <LogResMsg v-else-if="gameMode === 'logresmsg'" />
+      <VersionNotMatch v-else-if="gameMode === 'versionnotmatch'" />
 
-<!--      &lt;!&ndash; <div id="test" style="width: 300px; height: 300px; margin: auto; margin-top: 150px">TESTING STUFF</div> &ndash;&gt;-->
-<!--      &lt;!&ndash;<Dialog />&ndash;&gt;-->
+      <!-- <div id="test" style="width: 300px; height: 300px; margin: auto; margin-top: 150px">TESTING STUFF</div> -->
+      <!--<Dialog />-->
 
-<!--      &lt;!&ndash; <Draggable>-->
-<!--        <template slot="header"> Header </template>-->
-<!--        <template slot="main"> Main </template>-->
-<!--        <template slot="footer"> Footer </template>-->
-<!--      </Draggable> &ndash;&gt;-->
-<!--    </v-main>-->
-<!--    &lt;!&ndash; <MainBar /> &ndash;&gt;-->
-<!--    <div id="hbxtitle">-->
-<!--      <v-btn block id="debugbutton" @click="ToggleDebug">Debug</v-btn>-->
-<!--      <div v-if="debugon" id="hbxdebug">-->
-<!--        <v-btn block @click="$root.PlaySound('E', 14, 5)">Test1</v-btn>-->
-<!--        <v-btn block @click="Reload">Reload</v-btn>-->
-<!--        <v-btn block @click="Logout">Logout</v-btn>-->
-<!--        <v-btn block @click="ToggleDebug">Test4</v-btn>-->
-<!--        &lt;!&ndash; <img :src="charSprite" :key="charKey" style="height: 256px; width: 256px" /> &ndash;&gt;-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div v-if="ShowVersion()" id="version">-->
-<!--      Game: V {{ gameVersion }}<br />-->
-<!--      UI: V {{ uiVersion }}-->
-<!--    </div>-->
-<!--  </v-app>-->
+      <!-- <Draggable>
+        <template slot="header"> Header </template>
+        <template slot="main"> Main </template>
+        <template slot="footer"> Footer </template>
+      </Draggable> -->
+    </v-main>
+    <!-- <MainBar /> -->
+    <div id="hbxtitle">
+      <v-btn block id="debugbutton" @click="toggleDebug">Toggle Debug</v-btn>
+      <div v-if="debug" id="hbxdebug">
+        <v-btn block @click="playSound('E', 14, 5)">Play sound</v-btn>
+        <v-btn block @click="reload">Reload</v-btn>
+        <v-btn block @click="logout">Logout</v-btn>
+        <v-btn block @click="toggleDebug">Toggle Debug</v-btn>
+        <!-- <img :src="charSprite" :key="charKey" style="height: 256px; width: 256px" /> -->
+      </div>
+    </div>
+    <div v-if="showVersion" id="version">
+      Game: v{{ gameVersion }}<br />
+      UI: v{{ uiVersion }}
+    </div>
+  </v-app>
 </template>
 
 <script setup lang="ts">
@@ -66,7 +82,7 @@ import { key } from '@/store';
 
 import { Character } from './types/Character';
 import Loading from './components/Loading.vue';
-// import MainMenu from './components/MainMenu.vue';
+import MainMenu from './components/MainMenu.vue';
 // import WaitingResponse from './components/WaitingResponse.vue';
 // import Connecting from './components/Connecting.vue';
 // import SelectCharacter from './components/SelectCharacter.vue';
@@ -87,22 +103,22 @@ defineProps({
   },
 });
 
-const update = ref(0);
-const debugOn = ref(false);
-const charSprite = ref('');
-const charKey = ref(0);
-
 // getters
 const gameMode = computed(() => store.getters['game/mode']);
 const gameVersion = computed(() => store.getters['game/gameVersion']);
 const uiVersion = computed(() => store.getters['game/uiVersion']);
+const update = computed(() => store.getters['game/update']);
+const debug = computed(() => store.getters['game/debug']);
+const charSprite = computed(() => store.getters['game/charSprite']);
+const charKey = computed(() => store.getters['game/charKey'])
 
 // actions
 const sendMessage = (msg: string, data: any) => store.dispatch('game/sendMessage', { msg, data }, { root: true });
 const playSound = (type: string, id: number, distance: number) => store.dispatch('game/playSound', { type, id, distance }, { root: true });
-const playMusic = (type: string, id: number, distance: number) => store.dispatch('game/playMusic', { type, id, distance }, { root: true });
-const changeMouse = (type: string, id: number, distance: number) => store.dispatch('game/changeMouse', { type, id, distance }, { root: true });
-const changeGameMode = (type: string, id: number, distance: number) => store.dispatch('game/changeGameMode', { type, id, distance }, { root: true });
+const playMusic = (status: boolean, file?: string) => store.dispatch('game/playMusic', { status, file }, { root: true });
+const changeMouse = (cursor: number) => store.dispatch('game/changeMouse', cursor, { root: true });
+const changeGameMode = (mode: string) => store.dispatch('game/changeGameMode', mode, { root: true });
+const toggleDebug = () => store.dispatch('game/setDebug', null, { root: true });
 
 function showVersion() {
   switch (gameMode.value) {
@@ -115,100 +131,21 @@ function shit() {
   playSound('E', 14, 5);
 }
 
-function toggleDebug() {
-  debugOn.value = !debugOn;
-}
-
-function Exit() {
-  //window.vueapp?.$emit('exit');
-}
-
-function login() {
-  if (gameMode.value !== 'mainmenu') return;
-  const account = 'a';
-  const password = 'b';
-  sendMessage('login', { account, password });
-  //this.$root.$emit('login', { account, password });
-}
-
 function setResolution(x: number, y: number) {
   sendMessage('resolution', { x, y });
 }
 
-function Logout() {
+function logout() {
   sendMessage('disconnect', {});
+}
+
+function reload() {
+  router.replace('/');
 }
 
 onMounted(() => {
   sendMessage('onload', {});
 });
-// window.uiVersion = '0.0.1';
-// window.gameVersion = '0.0.0';
 </script>
 <style lang="scss">
-#hbx-app {
-  width: 100%;
-  height: 100%;
-
-  color: white;
-
-  //position: absolute;
-  //top: 0px;
-  //left: 0px;
-
-  max-height: 100vh;
-  max-width: 100vw;
-  //margin-left: 25vw;
-  background: rgba(0, 0, 0, 0);
-  //padding-bottom: 8px;
-  -webkit-user-select: none;
-  user-select: none;
-}
-#test {
-  background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
-  -webkit-animation: rainbow 18s ease infinite;
-  animation: rainbow 18s ease infinite;
-  background-size: 1800% 1800%;
-
-  @-webkit-keyframes rainbow {
-    0% {
-      background-position: 0% 82%;
-    }
-    50% {
-      background-position: 100% 19%;
-    }
-    100% {
-      background-position: 0% 82%;
-    }
-  }
-  @keyframes rainbow {
-    0% {
-      background-position: 0% 82%;
-    }
-    50% {
-      background-position: 100% 19%;
-    }
-    100% {
-      background-position: 0% 82%;
-    }
-  }
-}
-#hbxtitle {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  text-align: center;
-  width: 15vw;
-  //height: 40px;
-  //background-color: #111111aa;
-}
-#debugbutton {
-  text-align: center;
-}
-#version {
-  font-size: 8pt;
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-}
 </style>

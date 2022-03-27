@@ -1,6 +1,8 @@
-import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
 import * as path from 'path';
+// @ts-ignore
+import vuetify from '@vuetify/vite-plugin'
 import { VitePWA } from 'vite-plugin-pwa';
 import { terser } from 'rollup-plugin-terser';
 
@@ -31,15 +33,16 @@ export default defineConfig({
         ],
       },
     }),
+    // https://github.com/vuetifyjs/vuetify-loader/tree/next/packages/vite-plugin
+    vuetify({
+      autoImport: true,
+    }),
   ],
+  define: { 'process.env': {} },
   resolve: {
     alias: {
-      '@': path.join(__dirname, './src'),
+      '@': path.resolve(__dirname, 'src'),
     },
-  },
-  server: {
-    port: 3000,
-    strictPort: true,
   },
   build: {
     rollupOptions: {
